@@ -1,0 +1,34 @@
+<div class="container">
+	<div class="row">
+		<h3 class="text-center">Take attendance for <%= Date.today %></h3>
+	</div>
+	<div class="table-responsive">          
+		<table class="table text-center">
+		    <thead>
+		      <tr class="row">
+		        <th class="col-xs-4 text-center">#</th>
+		        <th class="col-xs-4 text-center">Name</th>
+		        <th class="col-xs-4 text-center">Attendance</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <% @employeeNames.each_with_index do |employee, index| %>
+		      	<tr class="row">
+		      		<td class="col-xs-4"><%= index+1 %></td>
+		      		<td class="col-xs-4"><%= employee["name"] %></td>
+		      		<% if employee["value"] == "P" %>
+		      		<td class="col-xs-4"><input type="checkbox" checked></td>
+		      		<% else %>
+		      		<td class="col-xs-4"><input type="checkbox"></td>
+		      		<% end %>
+		      	</tr>
+		      <% end %>
+		    </tbody>
+		</table>
+		<% if @type === "save" %>
+		<button class="btn btn-success" id="submit">Save</button>
+		<% else %>
+		<button class="btn btn-success" id="submit">Update</button>
+		<% end %>
+	</div>
+</div>
