@@ -57,3 +57,11 @@ gem 'omniauth-google-oauth2'
 
 #for accessing google spreadsheet
 gem "google_drive"
+
+#for deploying rails app
+gem 'capistrano', '~> 3.10', '>= 3.10.1'
+gem 'capistrano-rails', '~> 1.3', '>= 1.3.1'
+gem 'capistrano-bundler', '~> 1.3'
+
+gem "therubyracer"
+gem "execjs"
