@@ -2,7 +2,7 @@ require 'bundler'
 require 'date'
 
 class MeController < ApplicationController
-	before_action :authenticate, only: [:show]
+	#before_action :authenticate, only: [:show]
 	before_action :getSpreadsheet, only: [:show, :updateWorkSheet]
 	def show
 		@employeeNames = []

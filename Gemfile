@@ -65,3 +65,6 @@ gem 'capistrano-bundler', '~> 1.3'
 
 gem "therubyracer"
 gem "execjs"
+
+#for loading environment variables
+gem 'dotenv', '~> 2.2', '>= 2.2.1'
