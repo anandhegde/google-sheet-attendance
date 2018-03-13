@@ -61,7 +61,10 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "attendance_#{Rails.env}"
   config.action_mailer.perform_caching = false
-
+  config.cache_store = :memory_store
+  config.public_file_server.headers = {
+    'Cache-Control' => "public, max-age=#{2.days.seconds.to_i}"
+  }
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false

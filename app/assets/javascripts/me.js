@@ -30,4 +30,27 @@ $(document).ready(function(){
 			}
 		});
 	})
+	$(".delete").on("click", function(event){
+		let target = event.target;
+		let grandParent = $(target).parent().parent();
+		let index = grandParent.find(".index").text();
+		let name = grandParent.find(".name").text();
+		if (window.confirm(`Are you sure to want to delete ${name}?`)) {
+			let data = {};
+	        data["rowNumber"] = parseInt(index) + 1;
+	        data["name"] = name;
+	        $("#loaderDiv").show();
+			$.ajax({
+				type: "POST",
+				url: "/delete-employee",
+				beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+				data: data,
+				dataType: "json",
+				success: function(data){
+					$("#loaderDiv").hide();
+					window.location = "/me";
+				}
+			});
+	    }
+	})
 });

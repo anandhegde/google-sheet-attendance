@@ -104,4 +104,25 @@ class MeController < ApplicationController
 		end
 	end
 
+	def getWorksheetName
+		date = Date.today
+		month = date.strftime("%B")
+		year = date.strftime("%Y")
+		#getting worksheet name
+		worksheetName = month.downcase + "-" +year
+		return worksheetName
+	end
+
+	def deleteEmployee
+		getSpreadsheet
+		worksheet = @spreadsheet.worksheet_by_title(getWorksheetName)
+		worksheet.delete_rows(params[:rowNumber].to_i, 1)
+		worksheet.save
+		Rails.cache.delete Date.today.strftime("%d-%m-%Y")
+
+		respond_to do |format|
+			format.json { render json: {status: "done"} }
+		end
+	end
+
 end

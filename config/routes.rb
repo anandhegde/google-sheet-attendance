@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   root to: "home#show"
 
   post 'update-work-sheet' => 'me#updateWorkSheet'
+  post 'delete-employee' => "me#deleteEmployee"
   get 'getEmployeeNames' => 'me#getEmployeeNames'
 end

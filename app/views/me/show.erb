@@ -15,14 +15,14 @@
 		    <tbody>
 		      <% @employeeNames.each_with_index do |employee, index| %>
 		      	<tr class="row">
-		      		<td class="col-xs-3"><%= index+1 %></td>
-		      		<td class="col-xs-3"><%= employee["name"] %></td>
+		      		<td class="col-xs-3 index"><%= index+1 %></td>
+		      		<td class="col-xs-3 name"><%= employee["name"] %></td>
 		      		<% if employee["value"] == "P" %>
 		      		<td class="col-xs-3"><input type="checkbox" checked></td>
 		      		<% else %>
 		      		<td class="col-xs-3"><input type="checkbox"></td>
 		      		<% end %>
-		      		<td class="col-xs-3 text-center"><button class="btn btn-danger">Delete</button></td>
+		      		<td class="col-xs-3 text-center"><button class="btn btn-danger delete">Delete</button></td>
 		      	</tr>
 		      <% end %>
 		    </tbody>
