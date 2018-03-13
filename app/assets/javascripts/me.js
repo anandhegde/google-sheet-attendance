@@ -1,5 +1,7 @@
 $(document).ready(function(){
+	$("#loaderDiv").hide();
 	$("#submit").on("click", function(){
+		$("#loaderDiv").show();
 		let data = {};
 		let attendanceData = {};
 		$("tr").each(function(index){
@@ -16,7 +18,6 @@ $(document).ready(function(){
 			data["type"] = "update";
 		}
 		data["data"] = attendanceData;
-		console.log(data)
 		$.ajax({
 			type: "POST",
 			url: "/update-work-sheet",
@@ -24,7 +25,8 @@ $(document).ready(function(){
 			data: data,
 			dataType: "json",
 			success: function(data){
-				$("#submit").text("Update")
+				$("#loaderDiv").hide();
+				$("#submit").text("Update");
 			}
 		});
 	})
