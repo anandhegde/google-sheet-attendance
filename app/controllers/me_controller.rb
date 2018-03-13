@@ -40,7 +40,7 @@ class MeController < ApplicationController
 				end
 			end
 			#set the cache for faster access
-			Rails.cache.write date.strftime("%d-%m-%Y"), @employeeNames
+			Rails.cache.write(date.strftime("%d-%m-%Y"), @employeeNames, :timeToLive => 600.seconds)
 		end
 	end
 
@@ -81,7 +81,7 @@ class MeController < ApplicationController
 		
 
 		Rails.cache.delete date.strftime("%d-%m-%Y")
-		Rails.cache.write(date.strftime("%d-%m-%Y"), cacheInfo, :timeToLive => 86400.seconds)
+		Rails.cache.write(date.strftime("%d-%m-%Y"), cacheInfo, :timeToLive => 600.seconds)
 		worksheet = @spreadsheet.worksheet_by_title(worksheetName)
 		
 		columnNumber = worksheet.num_cols
