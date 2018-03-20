@@ -44,15 +44,6 @@ class MeController < ApplicationController
 		end
 	end
 
-	def getSpreadsheet
-		Bundler.require
-		client_secret = "/home/#{Etc.getlogin}/secrets/client_secret.json"
-		# Authenticate a session with your Service Account
-		session = GoogleDrive::Session.from_service_account_key(client_secret)
-		# Get the spreadsheet by its title
-		@spreadsheet = session.spreadsheet_by_title("CrucibleAttendance")
-	end
-
 	def updateWorkSheet
 		#get the spreadsheet instance
 		getSpreadsheet
@@ -123,6 +114,10 @@ class MeController < ApplicationController
 		respond_to do |format|
 			format.json { render json: {status: "done"} }
 		end
+	end
+
+	def newEmployee
+		
 	end
 
 end
