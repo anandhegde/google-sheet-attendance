@@ -8,8 +8,9 @@
 		      <tr class="row">
 		        <th class="col-xs-3 text-center">#</th>
 		        <th class="col-xs-3 text-center">Name</th>
-		        <th class="col-xs-3 text-center">Attendance</th>
-		        <th class="col-xs-3 text-center">Action</th>
+		        <th class="col-xs-2 text-center">Attendance</th>
+		        <th class="col-xs-2 text-center">Action</th>
+				<th class="col-xs-2 text-center">Edit</th>
 		      </tr>
 		    </thead>
 		    <tbody>
@@ -18,11 +19,12 @@
 		      		<td class="col-xs-3 index"><%= index+1 %></td>
 		      		<td class="col-xs-3 name"><%= employee["name"] %></td>
 		      		<% if employee["value"] == "P" %>
-		      		<td class="col-xs-3"><input type="checkbox" checked></td>
+		      		<td class="col-xs-2"><input type="checkbox" checked></td>
 		      		<% else %>
-		      		<td class="col-xs-3"><input type="checkbox"></td>
+		      		<td class="col-xs-2"><input type="checkbox"></td>
 		      		<% end %>
-		      		<td class="col-xs-3 text-center"><button class="btn btn-danger delete">Delete</button></td>
+		      		<td class="col-xs-2 text-center"><button class="btn btn-danger delete">Delete</button></td>
+		      		<td class="col-xs-2 text-center"><a href="/employee/<%=index+2%>" target="_blank"><button class="btn btn-primary">Edit</button></a></td>
 		      	</tr>
 		      <% end %>
 		    </tbody>
