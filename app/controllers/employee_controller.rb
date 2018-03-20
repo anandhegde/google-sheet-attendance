@@ -1,5 +1,20 @@
 class EmployeeController < ApplicationController
 	before_action :authenticate
+	before_action :set_privilege
+	before_action :has_permission?, except: [:getWorksheetName]
+	def has_permission?
+		#normal user actions
+		normal_user_privilege = [
+			"show",
+			"new",
+			"addEmployee",
+			"updateWorkSheet"
+		]
+		if @privilege.nil? || (@privilege == "normal" && !normal_user_privilege.include?(self.action_name))
+			render :json => { :errors => "unauthorized" }, :status => 401
+		end
+	end
+
 	def show
 		date = Date.today
 		month = date.strftime("%B")

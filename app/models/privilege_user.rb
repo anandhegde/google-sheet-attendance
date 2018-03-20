@@ -1,0 +1,2 @@
+class PrivilegeUser < ApplicationRecord
+end

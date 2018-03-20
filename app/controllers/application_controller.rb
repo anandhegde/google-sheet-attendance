@@ -2,7 +2,6 @@ require 'bundler'
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user
-
   @@spreadsheet = nil
 
   def authenticate
@@ -16,6 +15,18 @@ class ApplicationController < ActionController::Base
   def user_signed_in?
   	# converts current_user to a boolean by negating the negation
   	!!current_user
+  end
+
+  def set_privilege
+    admin_emails = ["shridharindia@gmail.com", "Shridharhegde.121@gmail.com"]
+    privilege_user = PrivilegeUser.find_by(email: current_user.email)
+    if admin_emails.include?(current_user.email)
+      @privilege = "admin"
+    elsif privilege_user
+      @privilege = privilege_user.role
+    else
+      @privilege = nil
+    end
   end
 
   def getSpreadsheet
