@@ -29,5 +29,31 @@ $(document).ready(function(){
 		} else {
 			$("#error-message").show();
 		}
+	});
+	$("#update-employee").on("click", function(){
+		let name = $("#name")[0].value;
+		let remuneration = $("#remuneration")[0].value;
+		if(name && remuneration) {
+			$("#loaderDiv").show();
+			let data = {
+				name: name,
+				remuneration: remuneration
+			}
+			$.ajax({
+				type: "POST",
+				url: "/employee/" + $("#row-number").text(),
+				beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+				data: data,
+				dataType: "json",
+				success: function(data){
+					$("#loaderDiv").hide();
+					let message = `${name} details updated`;
+					$("#success-message").show().fadeOut(3000);
+					$("#success-message").find("p").text(message);
+				}
+			});
+		} else {
+			$("#error-message").show();
+		}
 	})
 })

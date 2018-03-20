@@ -17,4 +17,6 @@ Rails.application.routes.draw do
 
   get 'employee/new' => 'employee#new'
   post 'employee/new' => 'employee#addEmployee'
+  get 'employee/:row_number' => 'employee#getEmployee'
+  post 'employee/:row_number' => 'employee#updateEmployee'
 end

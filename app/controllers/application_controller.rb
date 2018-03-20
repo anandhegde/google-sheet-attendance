@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user
 
+  @@spreadsheet = nil
+
   def authenticate
   	redirect_to :login unless user_signed_in?
   end
@@ -22,7 +24,10 @@ class ApplicationController < ActionController::Base
     # Authenticate a session with your Service Account
     session = GoogleDrive::Session.from_service_account_key(client_secret)
     # Get the spreadsheet by its title
-    @spreadsheet = session.spreadsheet_by_title("CrucibleAttendance")
+    if @@spreadsheet.nil?
+      @@spreadsheet = session.spreadsheet_by_title("CrucibleAttendance")
+    end
+    @@spreadsheet
   end
 
 end
