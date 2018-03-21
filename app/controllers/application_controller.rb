@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
       "EmployeeController::updateWorkSheet"
     ]
     if @privilege.nil? || (@privilege == "normal" && !normal_user_privilege.include?("#{self.class.to_s}::#{self.action_name}"))
-      render :json => { :errors => "unauthorized" }, :status => 401
+      redirect_to '/401'
     end
   end
 

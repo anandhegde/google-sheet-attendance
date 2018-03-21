@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get 'employee/:row_number' => 'employee#getEmployee'
   post 'employee/:row_number' => 'employee#updateEmployee'
 
+  get '/401' => 'error#unauthorized'
+
   #admin routes
   get 'admin/privilege-users' => 'admin#new_privilege_users'
   post 'admin/privilege-users' => 'admin#add_privilege_users'
