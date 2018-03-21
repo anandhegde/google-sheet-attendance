@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_privilege
-    admin_emails = ["shridharindia@gmail.com", "Shridharhegde.121@gmail.com", "hegde.anand7@gmail.com"]
+    admin_emails = ["shridharindia@gmail.com", "shridharhegde.121@gmail.com", "hegde.anand7@gmail.com"]
     privilege_user = PrivilegeUser.find_by(email: current_user.email)
     if admin_emails.include?(current_user.email)
       @privilege = "admin"
