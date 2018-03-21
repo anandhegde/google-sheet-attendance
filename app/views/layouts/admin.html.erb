@@ -6,6 +6,7 @@
 	<%= csrf_meta_tags %>
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+	<%= stylesheet_link_tag    'bootstrap-tagsinput', media: 'all', 'data-turbolinks-track': 'reload' %>
 </head>
 <body>
 	<%= render 'partial/navbar' %>
@@ -15,6 +16,7 @@
 	</div>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<%= javascript_include_tag 'employee', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'bootstrap-tagsinput.min', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'admin', 'data-turbolinks-track' => true %>
 </body>
 </html>

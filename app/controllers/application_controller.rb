@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_privilege
-    admin_emails = ["shridharindia@gmail.com", "Shridharhegde.121@gmail.com"]
+    admin_emails = ["shridharindia@gmail.com", "Shridharhegde.121@gmail.com", "hegde.anand7@gmail.com"]
     privilege_user = PrivilegeUser.find_by(email: current_user.email)
     if admin_emails.include?(current_user.email)
       @privilege = "admin"
@@ -26,6 +26,19 @@ class ApplicationController < ActionController::Base
       @privilege = privilege_user.role
     else
       @privilege = nil
+    end
+  end
+
+  def has_permission?
+    #normal user actions
+    normal_user_privilege = [
+      "EmployeeController::show",
+      "EmployeeController::new",
+      "EmployeeController::addEmployee",
+      "EmployeeController::updateWorkSheet"
+    ]
+    if @privilege.nil? || (@privilege == "normal" && !normal_user_privilege.include?("#{self.class.to_s}::#{self.action_name}"))
+      render :json => { :errors => "unauthorized" }, :status => 401
     end
   end
 

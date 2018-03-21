@@ -16,6 +16,9 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/">Home</a></li>
         <li><a href="/employee/new">Add Employee</a></li>
+        <% if @privilege === "admin" %>
+        <li><a href="/admin/privilege-users">Add Email</a></li>
+        <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

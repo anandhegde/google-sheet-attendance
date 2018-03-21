@@ -24,7 +24,10 @@ $(document).ready(function(){
 					$("#success-message").find("p").text(message)
 					$("#name")[0].value = "";
 					$("#remuneration")[0].value = "";
-				}
+				},
+	            error: function(data){
+	                $("#loaderDiv").hide();
+	            }
 			});
 		} else {
 			$("#error-message").show();
@@ -50,7 +53,10 @@ $(document).ready(function(){
 					let message = `${name} details updated`;
 					$("#success-message").show().fadeOut(3000);
 					$("#success-message").find("p").text(message);
-				}
+				},
+	            error: function(data){
+	                $("#loaderDiv").hide();
+	            }
 			});
 		} else {
 			$("#error-message").show();
@@ -83,7 +89,10 @@ $(document).ready(function(){
 			success: function(data){
 				$("#loaderDiv").hide();
 				$("#submit").text("Update");
-			}
+			},
+            error: function(data){
+                $("#loaderDiv").hide();
+            }
 		});
 	});
 	$(".delete").on("click", function(event){
@@ -105,7 +114,10 @@ $(document).ready(function(){
 				success: function(data){
 					$("#loaderDiv").hide();
 					window.location = "/";
-				}
+				},
+	            error: function(data){
+	                $("#loaderDiv").hide();
+	            }
 			});
 	    }
 	});
